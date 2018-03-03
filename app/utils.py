@@ -280,6 +280,8 @@ def getDirectionsCanGo(snakeHead, turnDictionary):
 
 
 def getUnvisitedNeighbor(node, otherNodes):
+    print(type(node))
+    print(node)
     x = node[0]
     y = node[1]
     right = (x + 1, y)
@@ -335,8 +337,6 @@ def determineDirection(node, head):
 
 
 def getClosestFood(dirsFromHead, head, foods, otherNodes, parentDictionary):
-    import pprint
-    pprint.pprint(vars())
     queue = []
     queue.append(head)
     otherNodes[tuple(head)] = True
