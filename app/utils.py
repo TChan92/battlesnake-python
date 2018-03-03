@@ -366,7 +366,7 @@ def getClosestFood(dirsFromHead, head, foods, otherNodes, parentDictionary):
 def ButtFirstSearch(dirsFromHead, head, tail, otherNodes, parentDictionary):
     queue = []
     # queue.append(head)
-    queue.append((head['x'], head['y'])
+    queue.append((head['x'], head['y']))
     otherNodes[tuple(head)] = True
     while len(queue) > 0:
         node = queue.pop(0)
