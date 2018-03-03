@@ -335,12 +335,14 @@ def determineDirection(node, head):
 
 
 def getClosestFood(dirsFromHead, head, foods, otherNodes, parentDictionary):
+    import pprint
+    pprint.pprint(vars())
     queue = []
     queue.append(head)
     otherNodes[tuple(head)] = True
     while len(queue) > 0:
         node = queue.pop(0)
-        if list(node) in foods:
+        if node in foods:
             while not (parentDictionary[node] == head):
                 node = parentDictionary[node]
             if determineDirection(node, head) in dirsFromHead:
