@@ -267,11 +267,11 @@ def dirsCouldCollideIn(ourSnakeObj,
                 elif numberOfMovesTheyHave == 1:
                     setHeuristicValue(dirHeuristic, ourDir, CERTAIN_DEATH,
                                       turnDictionary, ourCoord)
-    for ourDir in dirsOurSnakeCanGo:
-        ourCoord = directionalCoordinate(ourDir, t)
-        for diagDir in getDiagDir(theirDirs, t2):
-            if ourCoord == diagDir:
-                setHeuristicValue(dirHeuristic, ourDir, DANGER + 0.5)
+    # for ourDir in dirsOurSnakeCanGo:
+    #     ourCoord = directionalCoordinate(ourDir, t)
+    #     for diagDir in getDiagDir(theirDirs, t2):
+    #         if ourCoord == diagDir:
+    #             setHeuristicValue(dirHeuristic, ourDir, DANGER + 0.5)
 
 
 def getDirectionsCanGo(snakeHead, turnDictionary):
