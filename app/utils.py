@@ -212,8 +212,10 @@ def removeItemFromDictionary(key, dictionary):
 
 # gives number for co-ord, ex (0, 0) top L
 def directionalCoordinate(direction, withRespectTo):
-    x = withRespectTo['x']
-    y = withRespectTo['y']
+    # x = withRespectTo['x']
+    x = withRespectTo[0]
+    # y = withRespectTo['y']
+    y = withRespectTo[1]
     if (direction == 'up'):
         return (x, y - 1)
     elif (direction == 'down'):
@@ -327,22 +329,22 @@ def bfs(rootNode, otherNodes):
 
 
 def determineDirection(node, head):
-    # if list(head)[1] - list(node)[1] == 1:
-    #     return "up"
-    # if list(head)[1] - list(node)[1] == -1:
-    #     return "down"
-    # if list(head)[0] - list(node)[0] == 1:
-    #     return "left"
-    # if list(head)[0] - list(node)[0] == -1:
-    #     return "right"
-    if head['y'] - node['y'] == 1:
+    if list(head)[1] - list(node)[1] == 1:
         return "up"
-    if head['y'] - node['y'] == -1:
+    if list(head)[1] - list(node)[1] == -1:
         return "down"
-    if head['x'] - node['x'] == 1:
+    if list(head)[0] - list(node)[0] == 1:
         return "left"
-    if head['x'] - node['x'] == -1:
+    if list(head)[0] - list(node)[0] == -1:
         return "right"
+    # if head['y'] - node['y'] == 1:
+    #     return "up"
+    # if head['y'] - node['y'] == -1:
+    #     return "down"
+    # if head['x'] - node['x'] == 1:
+    #     return "left"
+    # if head['x'] - node['x'] == -1:
+    #     return "right"
 
 
 def getClosestFood(dirsFromHead, head, foods, otherNodes, parentDictionary):
