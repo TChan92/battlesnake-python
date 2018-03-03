@@ -133,7 +133,7 @@ def determineMovePriority(directionsCanGo,
                           directionHeuristics,
                           snakeObj):
     headOfOurSnake = snakeObj.headOfOurSnake
-    headOfOurSnake = (snakeObj.headOfOurSnake[0],snakeObj.headOfOurSnake[1])
+    headOfOurSnake = (snakeObj.headOfOurSnake['x'],snakeObj.headOfOurSnake['y'])
     ourSnake = snakeObj.ourSnake
     currMove = "up"
     # Set heuristic values if they need to be found
