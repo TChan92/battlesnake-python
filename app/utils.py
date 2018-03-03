@@ -211,8 +211,8 @@ def removeItemFromDictionary(key, dictionary):
 
 # gives number for co-ord, ex (0, 0) top L
 def directionalCoordinate(direction, withRespectTo):
-    x = withRespectTo[0]
-    y = withRespectTo[1]
+    x = withRespectTo['x']
+    y = withRespectTo['y']
     if (direction == 'up'):
         return (x, y - 1)
     elif (direction == 'down'):
@@ -316,13 +316,13 @@ def bfs(rootNode, otherNodes):
 
 
 def determineDirection(node, head):
-    if list(head)[1] - list(node)[1] == 1:
+    if list(head)['y'] - list(node)['y'] == 1:
         return "up"
-    if list(head)[1] - list(node)[1] == -1:
+    if list(head)['y'] - list(node)['y'] == -1:
         return "down"
-    if list(head)[0] - list(node)[0] == 1:
+    if list(head)['x'] - list(node)['x'] == 1:
         return "left"
-    if list(head)[0] - list(node)[0] == -1:
+    if list(head)['x'] - list(node)['x'] == -1:
         return "right"
 
 
