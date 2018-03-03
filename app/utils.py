@@ -169,7 +169,7 @@ def determineMovePriority(directionsCanGo,
                                      turnDictionary.copy(),
                                      generateDictionaryTuple(mapObj)
                                      )
-            if foodDir == None:
+            if foodDir == None and ourSnake['health'] > 50:
                 # TODO need to change to space filling algorithm
                 buttFirstDir = ButtFirstSearch(dirsThatHaveMax,
                                                headOfOurSnake,
