@@ -107,7 +107,7 @@ def move():
 @bottle.post('/end')
 def end():
     print("END CALLED")
-    return 
+    return
 
 # Expose WSGI app (so gunicorn can find it)
 application = bottle.default_app()
