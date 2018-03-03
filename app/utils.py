@@ -280,9 +280,8 @@ def getDirectionsCanGo(snakeHead, turnDictionary):
 
 
 def getUnvisitedNeighbor(node, otherNodes):
-    print(node)
-    x = node['x']
-    y = node['y']
+    x = node[0]
+    y = node[1]
     right = (x + 1, y)
     left = (x - 1, y)
     up = (x, y - 1)
