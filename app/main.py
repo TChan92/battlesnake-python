@@ -68,7 +68,7 @@ def move():
         # as the snake extends out in the first 3 turns
         coordsToIterateThrough = snake['body']['data'][:-1]
         if data['turn'] < 2:
-            coordsToIterateThrough = snake['data']
+            coordsToIterateThrough = snake['body']['data']
 
         # removes all snake bodies/tail (not head) from list of
         # possible co-ordinates
