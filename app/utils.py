@@ -163,7 +163,8 @@ def determineMovePriority(directionsCanGo,
             # Here we have multiple choices which offer the same amount 
             # of spaces
             if ourSnake['health'] > 50:
-            # First look at the direction that offers the closest food
+                print("Getting food")
+                # First look at the direction that offers the closest food
                 foodDir = getClosestFood(dirsThatHaveMax,
                                          headOfOurSnake,
                                          mapObj.food,
@@ -194,6 +195,7 @@ def determineMovePriority(directionsCanGo,
                     setHeuristicValue(directionHeuristics, buttFirstDir, OPEN)
             # We are able to get to food. Change heuristic from OPEN to FOOD
             elif ourSnake['health'] > 50:
+                print("Getting food")
                 # if directionHeuristics[foodDir] != DANGER:
                 setHeuristicValue(directionHeuristics, foodDir, FOOD)
             # Remove any that are dangerous
