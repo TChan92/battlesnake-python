@@ -256,7 +256,7 @@ def dirsCouldCollideIn(ourSnakeObj,
     t2 = (otherSnakeObj['body']['data'][0]['x'], otherSnakeObj['body']['data'][0]['y'])
     dirsOtherSnakeCanGo = getDirectionsCanGo(t2, turnDictionary)
     numberOfMovesTheyHave = len(dirsOtherSnakeCanGo)
-
+    # Loop through where we can go and see others can go
     for ourDir in dirsOurSnakeCanGo:
         ourCoord = directionalCoordinate(ourDir, t)
         for theirDirs in dirsOtherSnakeCanGo:
@@ -267,13 +267,17 @@ def dirsCouldCollideIn(ourSnakeObj,
                 elif numberOfMovesTheyHave == 1:
                     setHeuristicValue(dirHeuristic, ourDir, CERTAIN_DEATH,
                                       turnDictionary, ourCoord)
+    for ourDir in dirsOurSnakeCanGo:
+        ourCoord = directionalCoordinate(ourDir, t)
+        for diagDir in getDiagDir(theirDirs, t2):
+            if ourCoord == diagDir:
+                setHeuristicValue(dirHeuristic, ourDir, DANGER + 0.5)
 
 
 def getDirectionsCanGo(snakeHead, turnDictionary):
     head = snakeHead
     canGo = []
     # x = head['x']
-    print(head)
     x = head[0]
     y = head[1]
     # y = head['y']
@@ -289,6 +293,28 @@ def getDirectionsCanGo(snakeHead, turnDictionary):
         canGo.append('up')
     if down in turnDictionary.keys():
         canGo.append('down')
+    return canGo
+
+
+def getDiagDir(snakeHead, turnDictionary):
+    head = snakeHead
+    canGo = []
+    # x = head['x']
+    x = head[0]
+    y = head[1]
+    # y = head['y']
+    ru = (x + 1, y - 1)
+    lu = (x - 1, y - 1)
+    rd = (x + 1, y + 1)
+    ld = (x - 1, y + 1)
+    if ru in turnDictionary.keys():
+        canGo.append('ru')
+    if lu in turnDictionary.keys():
+        canGo.append('lu')
+    if rd in turnDictionary.keys():
+        canGo.append('rd')
+    if ld in turnDictionary.keys():
+        canGo.append('ld')
     return canGo
 
 
