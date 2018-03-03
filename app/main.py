@@ -73,8 +73,8 @@ def move():
         # removes all snake bodies/tail (not head) from list of
         # possible co-ordinates
         for coord in coordsToIterateThrough:
-            x = coord[0]
-            y = coord[1]
+            x = coord['x']
+            y = coord['y']
             # removes move directions that are directly onto enemy snakes
             if not turnDictionary.get((x, y), None) is None:
                 del turnDictionary[(x, y)]
