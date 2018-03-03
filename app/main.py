@@ -1,6 +1,7 @@
 import bottle
 import os
 import sys
+from pprint import pprint
 
 from Snake import Snake
 from Map import Map
@@ -48,7 +49,7 @@ def move():
     snakeObj = Snake() 
     data = bottle.request.json
     mapObj.setData(data)
-    print(data)
+    pprint(data)
     # True/False for every spot on the board for visited nodes in BFS
     if (len(originalDictionary) < 1):
         generateDictionaryTF(mapObj, originalDictionary)
@@ -59,15 +60,15 @@ def move():
         if snake['id'] == data['you']['id']:
             ourSnake = snake
             snakeObj.ourSnake = ourSnake
-            snakeObj.headOfOurSnake = ourSnake['coords'][0]
+            snakeObj.headOfOurSnake = ourSnake['data'][0]
         else:
             snakeObj.otherSnakes.append(snake)
 
         # If it's the first few turns we want to not remove the tail from nodes that can be removed from the list
         # as the snake extends out in the first 3 turns
-        coordsToIterateThrough = snake['coords'][:-1]
+        coordsToIterateThrough = snake['data'][:-1]
         if data['turn'] < 2:
-            coordsToIterateThrough = snake['coords']
+            coordsToIterateThrough = snake['data']
 
         # removes all snake bodies/tail (not head) from list of
         # possible co-ordinates
