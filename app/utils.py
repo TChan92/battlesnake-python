@@ -342,7 +342,7 @@ def getClosestFood(dirsFromHead, head, foods, otherNodes, parentDictionary):
     otherNodes[tuple(head)] = True
     while len(queue) > 0:
         node = queue.pop(0)
-        if node in foods:
+        if node in foods['data']:
             while not (parentDictionary[node] == head):
                 node = parentDictionary[node]
             if determineDirection(node, head) in dirsFromHead:
