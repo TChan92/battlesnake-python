@@ -58,11 +58,10 @@ def move():
     # Makes list for other snakes by looking at all snakes with name != ours
     for snake in data['snakes']['data']:
         if snake['id'] == data['you']['id']:
-            print(snake)
             ourSnake = snake
             snakeObj.ourSnake = ourSnake
             snakeObj.headOfOurSnake = ourSnake['body']['data'][0]
-            snakeObj.health = ourSnake['health']
+            snakeObj.ourSnake.health = ourSnake['health']
         else:
             snakeObj.otherSnakes.append(snake)
 
