@@ -253,7 +253,8 @@ def dirsCouldCollideIn(ourSnakeObj,
                        turnDictionary):
     t = (ourSnakeObj.headOfOurSnake['x'], ourSnakeObj.headOfOurSnake['y'])
     dirsOurSnakeCanGo = getDirectionsCanGo(t, turnDictionary)
-    dirsOtherSnakeCanGo = getDirectionsCanGo(otherSnakeObj['body']['data'][0], turnDictionary)
+    t2 = (otherSnakeObj['body']['data'][0]['x'], otherSnakeObj['body']['data'][0]['y'])
+    dirsOtherSnakeCanGo = getDirectionsCanGo(t2, turnDictionary)
     numberOfMovesTheyHave = len(dirsOtherSnakeCanGo)
 
     for ourDir in dirsOurSnakeCanGo:
