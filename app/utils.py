@@ -328,6 +328,8 @@ def determineDirection(node, head):
     #     return "left"
     # if list(head)[0] - list(node)[0] == -1:
     #     return "right"
+    print(node)
+    print(head)
     if head['y'] - node['y'] == 1:
         return "up"
     if head['y'] - node['y'] == -1:
