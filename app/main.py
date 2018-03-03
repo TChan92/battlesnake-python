@@ -28,16 +28,19 @@ def start():
     mapObj.board_width = data['width']
     mapObj.board_height = data['height']
 
-    head_url = '%s://%s/static/head.gif' % (
-        bottle.request.urlparts.scheme,
-        bottle.request.urlparts.netloc
-    )
+    # head_url = '%s://%s/static/head.gif' % (
+    #     bottle.request.urlparts.scheme,
+    #     bottle.request.urlparts.netloc
+    # )
 
     return {
         'color': '#FFA500',
-        'taunt': '404 Taunt Not Found',
-        'head_url': head_url,
-        'name': ourName
+        'taunt': 'TODO Get Taunt Later',
+        # 'head_url': head_url,
+        'head_url': 'http://via.placeholder.com/300',
+        'name': ourName,
+        'head_type': "pixel",
+        'tail_type': "pixel"
     }
 
 @bottle.post('/move')
@@ -52,7 +55,7 @@ def move():
     # Remove spots that are completely unavailable
     # Makes list for other snakes by looking at all snakes with name != ours
     for snake in data['snakes']:
-        if snake['id'] == data['you']:
+        if snake['id'] == data['you']['id']:
             ourSnake = snake
             snakeObj.ourSnake = ourSnake
             snakeObj.headOfOurSnake = ourSnake['coords'][0]
@@ -92,7 +95,7 @@ def move():
 
     return {
         'move': currMove,
-        'taunt': tauntGenerator(mapObj)
+        # 'taunt': tauntGenerator(mapObj)
     }
 
 
