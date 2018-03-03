@@ -62,6 +62,7 @@ def move():
             snakeObj.ourSnake = ourSnake
             snakeObj.headOfOurSnake = ourSnake['body']['data'][0]
             snakeObj.ourSnake['health'] = ourSnake['health']
+            snakeObj.ourSnake['length'] = len(ourSnake['body']['data'])
         else:
             snakeObj.otherSnakes.append(snake)
 
@@ -99,6 +100,7 @@ def move():
     # send determined move to server
     return {
         'move': currMove,
+        'taunt': "Arrays start at 2. Change my mind"
         # 'taunt': tauntGenerator(mapObj)
     }
 
