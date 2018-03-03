@@ -162,14 +162,17 @@ def determineMovePriority(directionsCanGo,
         else:
             # Here we have multiple choices which offer the same amount 
             # of spaces
+            if ourSnake['health'] > 50:
             # First look at the direction that offers the closest food
-            foodDir = getClosestFood(dirsThatHaveMax,
-                                     headOfOurSnake,
-                                     mapObj.food,
-                                     turnDictionary.copy(),
-                                     generateDictionaryTuple(mapObj)
-                                     )
-            if foodDir == None and ourSnake['health'] > 50:
+                foodDir = getClosestFood(dirsThatHaveMax,
+                                         headOfOurSnake,
+                                         mapObj.food,
+                                         turnDictionary.copy(),
+                                         generateDictionaryTuple(mapObj)
+                                         )
+            else:
+                foodDir = None
+            if foodDir == None:
                 # TODO need to change to space filling algorithm
                 buttFirstDir = ButtFirstSearch(dirsThatHaveMax,
                                                headOfOurSnake,
