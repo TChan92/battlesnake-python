@@ -60,7 +60,7 @@ def move():
         if snake['id'] == data['you']['id']:
             ourSnake = snake
             snakeObj.ourSnake = ourSnake
-            snakeObj.headOfOurSnake = ourSnake['data'][0]
+            snakeObj.headOfOurSnake = ourSnake['body']['data'][0]
         else:
             snakeObj.otherSnakes.append(snake)
 
@@ -93,8 +93,8 @@ def move():
                                      directionHeuristics, 
                                      snakeObj)
     # danger check should happen after food evaluation
-    # send determined move to server
 
+    # send determined move to server
     return {
         'move': currMove,
         # 'taunt': tauntGenerator(mapObj)
