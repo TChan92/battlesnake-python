@@ -48,13 +48,14 @@ def move():
     snakeObj = Snake() 
     data = bottle.request.json
     mapObj.setData(data)
+    print(data)
     # True/False for every spot on the board for visited nodes in BFS
     if (len(originalDictionary) < 1):
         generateDictionaryTF(mapObj, originalDictionary)
     turnDictionary = originalDictionary.copy()
     # Remove spots that are completely unavailable
     # Makes list for other snakes by looking at all snakes with name != ours
-    for snake in data['snakes']:
+    for snake in data['snakes']['data']:
         if snake['id'] == data['you']['id']:
             ourSnake = snake
             snakeObj.ourSnake = ourSnake
