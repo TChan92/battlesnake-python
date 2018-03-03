@@ -1,7 +1,7 @@
 import bottle
 import os
 import sys
-from pprint import pprint
+# from pprint import pprint
 
 from Snake import Snake
 from Map import Map
@@ -49,7 +49,7 @@ def move():
     snakeObj = Snake() 
     data = bottle.request.json
     mapObj.setData(data)
-    pprint(data)
+    # pprint(data)
     # True/False for every spot on the board for visited nodes in BFS
     if (len(originalDictionary) < 1):
         generateDictionaryTF(mapObj, originalDictionary)
