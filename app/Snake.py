@@ -10,4 +10,5 @@ class Snake(object):
         self.headOfOurSnake = None
         self.ourSnake = None
         self.otherSnakes = []
+        self.health = 0
         return

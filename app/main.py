@@ -61,6 +61,7 @@ def move():
             ourSnake = snake
             snakeObj.ourSnake = ourSnake
             snakeObj.headOfOurSnake = ourSnake['body']['data'][0]
+            snakeObj.health = ourSnake['health']
         else:
             snakeObj.otherSnakes.append(snake)
 
