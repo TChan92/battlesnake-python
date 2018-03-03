@@ -258,9 +258,9 @@ def dirsCouldCollideIn(ourSnakeObj,
     numberOfMovesTheyHave = len(dirsOtherSnakeCanGo)
 
     for ourDir in dirsOurSnakeCanGo:
-        ourCoord = directionalCoordinate(ourDir, ourSnakeObj.headOfOurSnake)
+        ourCoord = directionalCoordinate(ourDir, t)
         for theirDirs in dirsOtherSnakeCanGo:
-            theirCoord = directionalCoordinate(theirDirs, otherSnakeObj['body']['data'][0])
+            theirCoord = directionalCoordinate(theirDirs, t2)
             if ourCoord == theirCoord:
                 if numberOfMovesTheyHave > 1:
                     setHeuristicValue(dirHeuristic, ourDir, DANGER)
