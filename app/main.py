@@ -66,7 +66,7 @@ def move():
 
         # If it's the first few turns we want to not remove the tail from nodes that can be removed from the list
         # as the snake extends out in the first 3 turns
-        coordsToIterateThrough = snake['data'][:-1]
+        coordsToIterateThrough = snake['body']['data'][:-1]
         if data['turn'] < 2:
             coordsToIterateThrough = snake['data']
 
