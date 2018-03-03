@@ -195,9 +195,9 @@ def determineMovePriority(directionsCanGo,
                     setHeuristicValue(directionHeuristics, buttFirstDir, OPEN)
             # We are able to get to food. Change heuristic from OPEN to FOOD
             elif ourSnake['health'] < 50 or ourSnake['length'] < (1.5 * mapObj.board_width):
-                print("Getting food")
-                # if directionHeuristics[foodDir] != DANGER:
-                setHeuristicValue(directionHeuristics, foodDir, FOOD)
+                # print("Getting food")
+                # # if directionHeuristics[foodDir] != DANGER:
+                # setHeuristicValue(directionHeuristics, foodDir, FOOD)
             # Remove any that are dangerous
             detectWallRidingKill(mapObj, snakeObj, dirsThatHaveMax, directionHeuristics)
             populateMissingHeuristics(directionHeuristics, headOfOurSnake,
