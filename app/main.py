@@ -4,41 +4,21 @@ import sys
 
 from Snake import Snake
 from Map import Map
-from utils import generateDictionaryTF, getDirectionsCanGo, \
-    removeSnakeCollisions, determineMovePriority, tauntGenerator
-
-import uuid
-
-'''
-Example Received Snake Object
-
-{
-    "id": "1234-567890-123456-7890",
-    "name": "Well Documented Snake",
-    "status": "alive",
-    "message": "Moved up",
-    "taunt": "Let's rock!",
-    "age": 56,
-    "health": 83,
-    "coords": [ [1, 1], [1, 2], [2, 2] ,]
-    "kills": 4,
-    "food": 12,
-    "gold": 2
-}
-'''
+from utils import *
 
 ourSnakeId = ""
-ourName = "Jeff"
+ourName = "CleverNameSnake"
 originalDictionary = {}
 mapObj = Map()
+
+@bottle.route('/')
+def static():
+    return "the server is running"
 
 
 @bottle.route('/static/<path:path>')
 def static(path):
-    return bottle.static_file(
-        path,
-        root='static/'
-    )
+    return bottle.static_file(path,root='static/')
 
 
 @bottle.post('/start')
@@ -55,7 +35,7 @@ def start():
 
     return {
         'color': '#FFA500',
-        'taunt': 'Wrestle with Jeff, prepare for death!',
+        'taunt': '404 Taunt Not Found',
         'head_url': head_url,
         'name': ourName
     }
@@ -107,7 +87,6 @@ def move():
                                      mapObj, 
                                      directionHeuristics, 
                                      snakeObj)
-    # ToDo -- Callum
     # danger check should happen after food evaluation
     # send determined move to server
 
@@ -116,10 +95,13 @@ def move():
         'taunt': tauntGenerator(mapObj)
     }
 
+
 # Expose WSGI app (so gunicorn can find it)
 application = bottle.default_app()
+
+
 if __name__ == '__main__':
     port = '8080'
     if len(sys.argv) > 1:
         port = sys.argv[1]
-    bottle.run(application, host=os.getenv('IP', '0.0.0.0'), port=os.getenv('PORT', port))
+    bottle.run(application, host=os.getenv('IP', '127.0.0.1'), port=os.getenv('PORT', 8080), debug=True)

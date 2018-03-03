@@ -6,12 +6,13 @@ NEXT_TO_WALL = 4  # ToDo (use current position in relation to map size)
 DANGER = 5  # complete (have to move head-to-head with another snake)
 CERTAIN_DEATH = 6  # surrounded by walls (never pick)
 
-tauntList = ['with', 'Jeff', 'prepare', 'for', 'death!', 'Wrestle']
+# tauntList = ['with', 'Jeff', 'prepare', 'for', 'death!', 'Wrestle']
 
 RIGHT = 'right'
 LEFT = 'left'
 UP = 'up'
 DOWN = 'down'
+
 
 def containsDirection(direction, directions):
     result = False
@@ -22,6 +23,7 @@ def containsDirection(direction, directions):
             continue
 
     return result
+
 
 def detectWallRidingKill(mapObj, snakeObj, dirsThatHaveMax, directionHeuristics):
     headOfOurSnake = snakeObj.headOfOurSnake
@@ -45,16 +47,15 @@ def detectWallRidingKill(mapObj, snakeObj, dirsThatHaveMax, directionHeuristics)
 
     if (nearTopOrBottomWall or nearRightOrLeftWall):
 
-
         # check whether it is riding parallel to the wall
-        rightTopWallRiding = nearTopWall and containsDirection(RIGHT,dirsThatHaveMax)
+        rightTopWallRiding = nearTopWall and containsDirection(RIGHT, dirsThatHaveMax)
         leftTopWallRiding = nearTopWall and containsDirection(LEFT, dirsThatHaveMax)
 
-        downRightWallRiding = nearRightWall and containsDirection(DOWN,dirsThatHaveMax)
-        upRightWallRiding = nearRightWall and containsDirection(UP,dirsThatHaveMax)
+        downRightWallRiding = nearRightWall and containsDirection(DOWN, dirsThatHaveMax)
+        upRightWallRiding = nearRightWall and containsDirection(UP, dirsThatHaveMax)
 
-        leftBottomWallRiding = nearBottomWall and containsDirection(LEFT,dirsThatHaveMax)
-        rightBottomWallRiding = nearBottomWall and containsDirection(RIGHT,dirsThatHaveMax)
+        leftBottomWallRiding = nearBottomWall and containsDirection(LEFT, dirsThatHaveMax)
+        rightBottomWallRiding = nearBottomWall and containsDirection(RIGHT, dirsThatHaveMax)
 
         upLeftWallRiding = nearLeftWall and containsDirection(UP, dirsThatHaveMax)
         downLeftWallRiding = nearLeftWall and containsDirection(DOWN, dirsThatHaveMax)
@@ -93,24 +94,31 @@ def detectWallRidingKill(mapObj, snakeObj, dirsThatHaveMax, directionHeuristics)
                     otherSnakeUpRiding = otherSnakeNeckY == otherSnakeHeadY + 1
                     otherSnakeDownRiding = otherSnakeNeckY == otherSnakeHeadY - 1
 
-
                 potentialSafeKillMove = ''
 
-                if rightTopWallRiding and otherSnakeRightRiding and (otherSnakeHeadX <= headX and otherSnakeHeadY == topWallY):
+                if rightTopWallRiding and otherSnakeRightRiding and (
+                        otherSnakeHeadX <= headX and otherSnakeHeadY == topWallY):
                     potentialSafeKillMove = RIGHT
-                elif leftTopWallRiding and otherSnakeLeftRiding and (otherSnakeHeadX >= headX and otherSnakeHeadY == topWallY):
+                elif leftTopWallRiding and otherSnakeLeftRiding and (
+                        otherSnakeHeadX >= headX and otherSnakeHeadY == topWallY):
                     potentialSafeKillMove = LEFT
-                elif downRightWallRiding and otherSnakeDownRiding and (otherSnakeHeadX == rightWallX and otherSnakeHeadY <= headY):
+                elif downRightWallRiding and otherSnakeDownRiding and (
+                        otherSnakeHeadX == rightWallX and otherSnakeHeadY <= headY):
                     potentialSafeKillMove = DOWN
-                elif upRightWallRiding and otherSnakeUpRiding and (otherSnakeHeadX == rightWallX and otherSnakeHeadY >= headY):
+                elif upRightWallRiding and otherSnakeUpRiding and (
+                        otherSnakeHeadX == rightWallX and otherSnakeHeadY >= headY):
                     potentialSafeKillMove = UP
-                elif leftBottomWallRiding and otherSnakeLeftRiding and (otherSnakeHeadX >= headX and otherSnakeHeadY == bottomWallY):
+                elif leftBottomWallRiding and otherSnakeLeftRiding and (
+                        otherSnakeHeadX >= headX and otherSnakeHeadY == bottomWallY):
                     potentialSafeKillMove = LEFT
-                elif rightBottomWallRiding and otherSnakeRightRiding and (otherSnakeHeadX <= headX and otherSnakeHeadY == bottomWallY):
+                elif rightBottomWallRiding and otherSnakeRightRiding and (
+                        otherSnakeHeadX <= headX and otherSnakeHeadY == bottomWallY):
                     potentialSafeKillMove = RIGHT
-                elif upLeftWallRiding and otherSnakeUpRiding and (otherSnakeHeadX == leftWallX and otherSnakeHeadY >= headY):
+                elif upLeftWallRiding and otherSnakeUpRiding and (
+                        otherSnakeHeadX == leftWallX and otherSnakeHeadY >= headY):
                     potentialSafeKillMove = UP
-                elif downLeftWallRiding and otherSnakeDownRiding and (otherSnakeHeadX == leftWallX and otherSnakeHeadY <= headY):
+                elif downLeftWallRiding and otherSnakeDownRiding and (
+                        otherSnakeHeadX == leftWallX and otherSnakeHeadY <= headY):
                     potentialSafeKillMove = DOWN
 
                 # if potential cut off move is defined set the heuristic value
@@ -119,11 +127,10 @@ def detectWallRidingKill(mapObj, snakeObj, dirsThatHaveMax, directionHeuristics)
                     continue
 
 
-
-def determineMovePriority(directionsCanGo, 
-                          turnDictionary, 
-                          mapObj, 
-                          directionHeuristics, 
+def determineMovePriority(directionsCanGo,
+                          turnDictionary,
+                          mapObj,
+                          directionHeuristics,
                           snakeObj):
     headOfOurSnake = snakeObj.headOfOurSnake
     ourSnake = snakeObj.ourSnake
@@ -170,16 +177,16 @@ def determineMovePriority(directionsCanGo,
                                                generateDictionaryTuple(mapObj)
                                                )
 
-                #WE NEED TO CHANGE THIS......
+                # WE NEED TO CHANGE THIS......
                 wallHumpDir = None
                 if buttFirstDir == None:
                     # currMove = dirsThatHaveMax[random.randint(0, len(dirsThatHaveMax) - 1)]
                     wallHumpDir = wallHump(dirsThatHaveMax, headOfOurSnake,
                                            turnDictionary.copy())
-                    #if directionHeuristics[wallHumpDir] != DANGER:
+                    # if directionHeuristics[wallHumpDir] != DANGER:
                     setHeuristicValue(directionHeuristics, wallHumpDir, FOOD)
                 else:
-                    #if directionHeuristics[wallHumpDir] != DANGER:
+                    # if directionHeuristics[wallHumpDir] != DANGER:
                     setHeuristicValue(directionHeuristics, buttFirstDir, OPEN)
             # We are able to get to food. Change heuristic from OPEN to FOOD
             else:
@@ -187,8 +194,8 @@ def determineMovePriority(directionsCanGo,
                 setHeuristicValue(directionHeuristics, foodDir, FOOD)
             # Remove any that are dangerous
             detectWallRidingKill(mapObj, snakeObj, dirsThatHaveMax, directionHeuristics)
-            populateMissingHeuristics(directionHeuristics, headOfOurSnake, 
-                    turnDictionary)
+            populateMissingHeuristics(directionHeuristics, headOfOurSnake,
+                                      turnDictionary)
             currMove = getMinimalHeuristicValue(directionHeuristics)
     elif len(directionsCanGo) == 1:
         currMove = directionsCanGo[0]
@@ -234,7 +241,7 @@ def removeSnakeCollisions(snakeObj, turnDictionary, heuristics):
 
 def dirsCouldCollideIn(ourSnakeObj,
                        otherSnakeObj,
-                       dirHeuristic, 
+                       dirHeuristic,
                        turnDictionary):
     dirsOurSnakeCanGo = getDirectionsCanGo(ourSnakeObj.headOfOurSnake, turnDictionary)
     dirsOtherSnakeCanGo = getDirectionsCanGo(otherSnakeObj['coords'][0], turnDictionary)
@@ -248,8 +255,8 @@ def dirsCouldCollideIn(ourSnakeObj,
                 if numberOfMovesTheyHave > 1:
                     setHeuristicValue(dirHeuristic, ourDir, DANGER)
                 elif numberOfMovesTheyHave == 1:
-                    setHeuristicValue(dirHeuristic, ourDir, CERTAIN_DEATH, 
-                            turnDictionary, ourCoord)
+                    setHeuristicValue(dirHeuristic, ourDir, CERTAIN_DEATH,
+                                      turnDictionary, ourCoord)
 
 
 def getDirectionsCanGo(snakeHead, turnDictionary):
@@ -361,7 +368,7 @@ def ButtFirstSearch(dirsFromHead, head, tail, otherNodes, parentDictionary):
 def getSpacesAround(dir, start, otherNodes):
     count = 0
     while (getUnvisitedNeighbor(
-                directionalCoordinate(dir, start), otherNodes) is not None):
+            directionalCoordinate(dir, start), otherNodes) is not None):
         count += 1
     return count
 
@@ -383,13 +390,15 @@ def wallHump(dirsFromHead, head, otherNodes):
         if dirMap[dir] == 3:  # 3:
             return dir
 
+
 def populateMissingHeuristics(directionHeuristics, snakeHead, dictionary):
     dirs = getDirectionsCanGo(snakeHead, dictionary)
     for dire in dirs:
         if not dire in directionHeuristics.keys():
             setHeuristicValue(directionHeuristics, dire, OPEN)
-        
+
     return
+
 
 def generateDictionaryTuple(mapObj):
     tempDictionary = {}
@@ -418,8 +427,9 @@ def setHeuristicValue(heuristic, key, value, turnDict=None, coord=None):
 
 
 def strictlySetHeuristicValue(heuristic, key, value, turnDict=None, coord=None):
-    heuristic[key] = value    
+    heuristic[key] = value
     return
+
 
 def getMinimalHeuristicValue(heuristic):
     minVal = CERTAIN_DEATH
@@ -439,4 +449,3 @@ def tauntGenerator(mapObj):
     # currentTaunt = tauntList.pop(0)
     # tauntList.append(currentTaunt)
     return tauntList[mapObj.turn % 6]
-
