@@ -297,26 +297,26 @@ def getDirectionsCanGo(snakeHead, turnDictionary):
     return canGo
 
 
-def getDiagDir(snakeHead, turnDictionary):
-    head = snakeHead
-    canGo = []
-    # x = head['x']
-    x = head[0]
-    y = head[1]
-    # y = head['y']
-    ru = (x + 1, y - 1)
-    lu = (x - 1, y - 1)
-    rd = (x + 1, y + 1)
-    ld = (x - 1, y + 1)
-    if ru in turnDictionary.keys():
-        canGo.append('ru')
-    if lu in turnDictionary.keys():
-        canGo.append('lu')
-    if rd in turnDictionary.keys():
-        canGo.append('rd')
-    if ld in turnDictionary.keys():
-        canGo.append('ld')
-    return canGo
+# def getDiagDir(snakeHead, turnDictionary):
+#     head = snakeHead
+#     canGo = []
+#     # x = head['x']
+#     x = head[0]
+#     y = head[1]
+#     # y = head['y']
+#     ru = (x + 1, y - 1)
+#     lu = (x - 1, y - 1)
+#     rd = (x + 1, y + 1)
+#     ld = (x - 1, y + 1)
+#     if ru in turnDictionary.keys():
+#         canGo.append('ru')
+#     if lu in turnDictionary.keys():
+#         canGo.append('lu')
+#     if rd in turnDictionary.keys():
+#         canGo.append('rd')
+#     if ld in turnDictionary.keys():
+#         canGo.append('ld')
+#     return canGo
 
 
 def getUnvisitedNeighbor(node, otherNodes):
