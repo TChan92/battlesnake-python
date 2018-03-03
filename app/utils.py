@@ -280,18 +280,20 @@ def getDirectionsCanGo(snakeHead, turnDictionary):
 
 
 def getUnvisitedNeighbor(node, otherNodes):
-    print(node)
-    print(otherNodes)
-    x = node['x']
-    y = node['y']
-    # right = (x + 1, y)
-    # left = (x - 1, y)
-    # up = (x, y - 1)
-    # down = (x, y + 1)
-    right = {'x': x + 1, 'y': y}
-    left = {'x': x - 1, 'y':y}
-    up = {'x': x, 'y': y - 1}
-    down = {'x': x, 'y': y + 1}
+    # print(node)
+    # print(otherNodes)
+    # x = node['x']
+    # y = node['y']
+    x = node[0]
+    y = node[1]
+    right = (x + 1, y)
+    left = (x - 1, y)
+    up = (x, y - 1)
+    down = (x, y + 1)
+    # right = {'x': x + 1, 'y': y}
+    # left = {'x': x - 1, 'y':y}
+    # up = {'x': x, 'y': y - 1}
+    # down = {'x': x, 'y': y + 1}
     if right in otherNodes.keys() and otherNodes[right] == False:
         return right
     elif left in otherNodes.keys() and otherNodes[left] == False:
@@ -342,7 +344,8 @@ def determineDirection(node, head):
 
 def getClosestFood(dirsFromHead, head, foods, otherNodes, parentDictionary):
     queue = []
-    queue.append(head)
+    # queue.append(head)
+    queue.append((head['x'], head['y']))
     otherNodes[tuple(head)] = True
     while len(queue) > 0:
         node = queue.pop(0)
