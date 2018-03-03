@@ -28,8 +28,8 @@ def containsDirection(direction, directions):
 def detectWallRidingKill(mapObj, snakeObj, dirsThatHaveMax, directionHeuristics):
     headOfOurSnake = snakeObj.headOfOurSnake
 
-    headX = headOfOurSnake[0]
-    headY = headOfOurSnake[1]
+    headX = headOfOurSnake['x']
+    headY = headOfOurSnake['y']
 
     # detect whether our snake is one row/column away from the wall and riding along
     # wall scenarios:
@@ -74,9 +74,9 @@ def detectWallRidingKill(mapObj, snakeObj, dirsThatHaveMax, directionHeuristics)
             leftWallX = headX - 1
 
             for otherSnake in snakeObj.otherSnakes:
-                otherSnakeHead = otherSnake['coords'][0]
-                otherSnakeHeadX = otherSnakeHead[0]
-                otherSnakeHeadY = otherSnakeHead[1]
+                otherSnakeHead = otherSnake['body']['data'][0]
+                otherSnakeHeadX = otherSnakeHead['x']
+                otherSnakeHeadY = otherSnakeHead['y']
 
                 otherSnakeInitialLength = len(otherSnake['coords']) == 1
                 otherSnakeRightRiding = otherSnakeInitialLength
@@ -84,10 +84,10 @@ def detectWallRidingKill(mapObj, snakeObj, dirsThatHaveMax, directionHeuristics)
                 otherSnakeUpRiding = otherSnakeInitialLength
                 otherSnakeDownRiding = otherSnakeInitialLength
 
-                if len(otherSnake['coords']) > 1:
-                    otherSnakeNeck = otherSnake['coords'][1]
-                    otherSnakeNeckX = otherSnakeNeck[0]
-                    otherSnakeNeckY = otherSnakeNeck[1]
+                if len(otherSnake['body']['data']) > 1:
+                    otherSnakeNeck = otherSnake['body']['data'][1]
+                    otherSnakeNeckX = otherSnakeNeck['x']
+                    otherSnakeNeckY = otherSnakeNeck['y']
 
                     otherSnakeRightRiding = otherSnakeNeckX == otherSnakeHeadX - 1
                     otherSnakeLeftRiding = otherSnakeNeckX == otherSnakeHeadX + 1
@@ -172,7 +172,7 @@ def determineMovePriority(directionsCanGo,
                 # TODO need to change to space filling algorithm
                 buttFirstDir = ButtFirstSearch(dirsThatHaveMax,
                                                headOfOurSnake,
-                                               ourSnake['coords'][-1],
+                                               ourSnake['body']['data'][-1],
                                                turnDictionary.copy(),
                                                generateDictionaryTuple(mapObj)
                                                )
@@ -445,7 +445,7 @@ def getMinimalHeuristicValue(heuristic):
     return minDir
 
 
-def tauntGenerator(mapObj):
-    # currentTaunt = tauntList.pop(0)
-    # tauntList.append(currentTaunt)
-    return tauntList[mapObj.turn % 6]
+# def tauntGenerator(mapObj):
+#     # currentTaunt = tauntList.pop(0)
+#     # tauntList.append(currentTaunt)
+#     return tauntList[mapObj.turn % 6]
