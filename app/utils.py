@@ -386,7 +386,7 @@ def getClosestFood(dirsFromHead, head, foods, otherNodes, parentDictionary):
     queue.append(head)
     # queue.append((head['x'], head['y']))
     otherNodes[tuple(head)] = True
-    print(foods['data'])
+    # print(foods['data'])
     food_dict = foods['data']
     foods = []
     for food in food_dict:
