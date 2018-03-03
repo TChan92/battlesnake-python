@@ -80,6 +80,7 @@ def move():
                 del turnDictionary[(x, y)]
             
     # dictionary of all 4 directions
+    t = (snakeObj.headOfOurSnake['x'], snakeObj.headOfOurSnake['y'])
     directionsCanGo = getDirectionsCanGo(snakeObj.headOfOurSnake, 
             turnDictionary)
     # dictionary holding all possible directions in form:
