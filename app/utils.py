@@ -190,7 +190,7 @@ def determineMovePriority(directionsCanGo,
                     # if directionHeuristics[wallHumpDir] != DANGER:
                     setHeuristicValue(directionHeuristics, buttFirstDir, OPEN)
             # We are able to get to food. Change heuristic from OPEN to FOOD
-            elif ourSnake.health > 50:
+            elif ourSnake['health'] > 50:
                 # if directionHeuristics[foodDir] != DANGER:
                 setHeuristicValue(directionHeuristics, foodDir, FOOD)
             # Remove any that are dangerous
