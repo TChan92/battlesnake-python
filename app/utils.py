@@ -316,13 +316,21 @@ def bfs(rootNode, otherNodes):
 
 
 def determineDirection(node, head):
-    if list(head)['y'] - list(node)['y'] == 1:
+    # if list(head)[1] - list(node)[1] == 1:
+    #     return "up"
+    # if list(head)[1] - list(node)[1] == -1:
+    #     return "down"
+    # if list(head)[0] - list(node)[0] == 1:
+    #     return "left"
+    # if list(head)[0] - list(node)[0] == -1:
+    #     return "right"
+    if head['y'] - node['y'] == 1:
         return "up"
-    if list(head)['y'] - list(node)['y'] == -1:
+    if head['y'] - node['y'] == -1:
         return "down"
-    if list(head)['x'] - list(node)['x'] == 1:
+    if head['x'] - node['x'] == 1:
         return "left"
-    if list(head)['x'] - list(node)['x'] == -1:
+    if head['x'] - node['x'] == -1:
         return "right"
 
 
