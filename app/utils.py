@@ -262,8 +262,10 @@ def dirsCouldCollideIn(ourSnakeObj,
 def getDirectionsCanGo(snakeHead, turnDictionary):
     head = snakeHead
     canGo = []
-    x = head['x']
-    y = head['y']
+    # x = head['x']
+    x = head[0]
+    y = head[1]
+    # y = head['y']
     right = (x + 1, y)
     left = (x - 1, y)
     up = (x, y - 1)
